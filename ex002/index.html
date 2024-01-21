@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório de Campanhas</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <h1>Relatório de Campanhas</h1>
+
+    <div>
+        {{ bar_chart|safe }}
+    </div>
+    
+    <table border="1">
+        <tr>
+            <th>Campaign Name</th>
+            <th>Ad Set Name</th>
+            <th>Ad Name</th>
+            <th>Spend</th>
+            <th>Clicks</th>
+            <th>Impressions</th>
+        </tr>
+        {% for entry in report_data['data'] %}
+        <tr>
+            <td>{{ entry['campaign_name'] }}</td>
+            <td>{{ entry['adset_name'] }}</td>
+            <td>{{ entry['ad_name'] }}</td>
+            <td>{{ entry['spend'] }}</td>
+            <td>{{ entry['clicks'] }}</td>
+            <td>{{ entry['impressions'] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
